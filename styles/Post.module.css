@@ -6,7 +6,7 @@
 }
 
 .card {
-  box-shadow: 0 2px 8px black;
+  box-shadow: 0 2px 6px black;
   margin-bottom: 20px;
   padding-left: 24px;
   padding-right: 24px;
@@ -32,6 +32,10 @@
 }
 
 /* 마크다운 CSS */
+.content {
+  font-size: 20px;
+}
+
 .content h1 {
   font-size: 42px;
   font-weight: bold;
@@ -76,11 +80,11 @@
   margin-bottom: 0.5em;
 }
 
+/* 일반 단락 */
 .content p {
-  font-size: 20px;
   line-height: 1.5em;
-  margin-top: 1.3em;
-  margin-bottom: 1.3em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 /* 링크 */
@@ -117,8 +121,10 @@
   padding-bottom: 8px;
   padding-left: 14px;
   color: gray;
+  margin-top: 1em;
   margin-bottom: 1em;
-  background-color: #efefefef;
+  background-color: #efefef;
+  box-shadow: 0 2px 5px -2px black;
 }
 
 .content blockquote p {
@@ -134,4 +140,78 @@
   border-radius: 6px;
   padding: 16px;
   line-height: 1.4em;
+  margin-bottom: 1em;
+}
+
+.content table {
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-collapse: separate;
+  border-spacing: 0 6px;
+  font-size: 16px;
+}
+
+.content table tr {
+  height: 3em;
+  box-shadow: 0 3px 5px -3px black;
+  background-color: #fcfcfcfc;
+}
+
+.content table thead tr {
+  background-color: #b90504;
+  color: #efefefef;
+}
+
+.content table th {
+  text-align: left;
+  vertical-align: middle;
+  padding: 1em;
+}
+
+.content table td {
+  vertical-align: middle;
+  padding: 1em;
+}
+
+.content li {
+  margin-left: 1em;
+  line-height: 1.5em;
+}
+
+.content ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.content ul li {
+  list-style: '- ';
+}
+
+.content ol li {
+  list-style-type: decimal;
+}
+
+.content ol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.content ol li::marker {
+  font-weight: bold;
+}
+
+/* 태그 */
+.tags_container {
+  margin-top: 20px;
+  vertical-align: middle;
+}
+
+.tags_container span {
+  font-size: 0.8em;
+  background-color: rgb(243, 50, 50);
+  color: white;
+  padding: 3px 6px;
+  margin-right: 1em;
+  box-shadow: 0 0 3px black;
 }

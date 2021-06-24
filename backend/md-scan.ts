@@ -32,13 +32,13 @@ export async function getAllPostsPaths(): Promise<string[]> {
   return result
 }
 
-// date format is 'YYYY-MM-DD'
+// date format is 'YYYY-MM-DD hh:mm'
 export async function getPost(filePath: string) {
   const absPath = path.join(postsRoot, filePath)
   const markdown = await readFile(absPath, 'utf8')
   const {
     content,
-    data: { date },
+    data: { date = new Date().toString(), tags = [] },
   } = matter(markdown)
-  return { content: md.render(content), date }
+  return { content: md.render(content), date, tags }
 }

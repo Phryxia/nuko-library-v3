@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import dayjs from 'dayjs'
 import { getAllPostsPaths, getPost } from '/backend/md-scan'
@@ -15,9 +15,10 @@ interface PostProps {
   content: string
   date: string
   tree: LinkerProps
+  tags: string[]
 }
 
-export default function Post({ title, content, date, tree }: PostProps) {
+export default function Post({ title, content, date, tags, tree }: PostProps) {
   return (
     <>
       <Head>
@@ -26,10 +27,23 @@ export default function Post({ title, content, date, tree }: PostProps) {
 
       <div className={cx('top_container')}>
         <Header title={title} date={date} />
-        <div
-          className={cx('card', 'content')}
-          dangerouslySetInnerHTML={{ __html: content }}
-        ></div>
+        <div className={cx('card')}>
+          {/* 마크다운 내용 */}
+          <div className={cx('content')} dangerouslySetInnerHTML={{ __html: content }}></div>
+
+          {/* 태그 */}
+          {tags.length > 0 && (
+            <>
+              <hr />
+              <div className={cx('tags_container')}>
+                Keywords:{' '}
+                {tags.map((tag) => (
+                  <span>#{tag}</span>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
         <Footer tree={tree} />
       </div>
     </>
@@ -53,7 +67,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const path = (context.params?.path as string[]) ?? []
-  const { content, date } = await getPost(path.join('/') + '.md')
+
+  const { content, date, tags } = await getPost(path.join('/') + '.md')
 
   // 푸터를 위한 작업
   const postsPaths = await getAllPostsPaths()
@@ -91,6 +106,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       content,
       date: dayjs(date).format('YYYY-MM-DD hh:mm'),
       tree,
+      tags,
     },
   }
 }

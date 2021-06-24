@@ -1,0 +1,35 @@
+.linker_container {
+  box-shadow: 0 2px 6px black;
+  margin-bottom: 20px;
+  font-family: 'SebangGothic';
+  color: #333333;
+  background-color: #f6f6f6;
+  padding: 12px 0;
+}
+
+.linker {
+  cursor: pointer;
+  font-size: 20px;
+  padding-left: 1em;
+}
+
+.linker a {
+  display: inline-block;
+  padding: 9px 0;
+}
+
+.arrow {
+  position: relative;
+  content: '';
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  transform: rotate(45deg);
+  margin-right: 0.5em;
+}
+
+.open {
+  transform: rotate(135deg);
+}

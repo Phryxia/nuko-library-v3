@@ -1,5 +1,5 @@
 import Linker, { LinkerProps } from './linker'
-import styles from '/styles/Post.module.css'
+import styles from '/styles/Linker.module.css'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
@@ -10,7 +10,7 @@ interface FooterProps {
 
 export default function Footer({ tree }: FooterProps) {
   return (
-    <div className={cx('card')}>
+    <div className={cx('linker_container')}>
       <Linker {...tree} />
     </div>
   )
