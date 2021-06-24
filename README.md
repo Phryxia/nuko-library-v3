@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Nuko-Library-v3
 
-## Getting Started
+누코 라이브러리는 마크다운 기반의 커스텀 정적 블로그입니다.
 
-First, run the development server:
+아직 안정화가 안됐습니다.
 
-```bash
+## Technology
+
+- SSG using Next.js
+- React
+- TypeScript
+- markdown-it
+- highlight.js
+
+# Install
+
+```
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Publish
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+`posts` 폴더에 들어가서 마크다운 파일이나 폴더를 자유롭게 추가하면 됩니다.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.tsx`.
+# History
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+누코 라이브러리 초기버전은 React 연습용으로 만들었는데, node.js를 결합해서 썼습니다. CSR만 지원하는 SPA라서 검색엔진최적화가 안됐습니다.
 
-## Learn More
+두 번째 버전은 SEO를 지원하기 위해 바닐라 js와 node.js, ejs를 사용하였습니다. 그러나 아무래도 리액트를 쓰는 것만큼 유연하지는 못했습니다.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+세 번째 버전인 저장소는 Next.js를 학습하고 나서 적용한 것입니다.
