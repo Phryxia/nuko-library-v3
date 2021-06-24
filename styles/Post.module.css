@@ -1,0 +1,137 @@
+.top_container {
+  max-width: 960px;
+  height: 100%;
+  transform: translateX(50vw) translateX(-50%);
+  background-color: #e8e8e8;
+}
+
+.card {
+  box-shadow: 0 2px 8px black;
+  margin-bottom: 20px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+
+  color: #333333;
+  background-color: #f6f6f6;
+}
+
+.header {
+  background-color: #b90504;
+  color: #f6f6f6;
+}
+
+.header h1 {
+  font-size: 64px;
+  padding-bottom: 16px;
+}
+
+.header h2 {
+  font-size: 16px;
+}
+
+/* 마크다운 CSS */
+.content h1 {
+  font-size: 42px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 4px solid rgb(243, 50, 50);
+  margin-bottom: 0.5em;
+}
+
+.content h2 {
+  font-size: 40px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 4px solid rgb(243, 50, 50);
+  margin-bottom: 0.5em;
+}
+
+.content h3 {
+  font-size: 36px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #e8e8e8;
+  margin-bottom: 0.5em;
+}
+
+.content h4 {
+  font-size: 32px;
+  font-weight: bold;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #e8e8e8;
+  margin-bottom: 0.5em;
+}
+
+.content h5 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content h6 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.content p {
+  font-size: 20px;
+  line-height: 1.5em;
+  margin-top: 1.3em;
+  margin-bottom: 1.3em;
+}
+
+/* 링크 */
+.content a {
+  color: rgb(243, 50, 50);
+  font-weight: bold;
+}
+
+/* 굵게 */
+.content strong {
+  font-weight: bold;
+}
+
+/* 기울임 */
+.content em {
+  font-style: italic;
+}
+
+/* 인라인 소스코드 */
+.content p code {
+  background-color: rgb(243, 216, 141);
+  color: black;
+  font-family: 'consolas';
+  font-size: 1rem;
+  padding: 3px 0.5em;
+  vertical-align: bottom;
+  border-radius: 5px;
+}
+
+/* 인용 */
+.content blockquote {
+  border-left: 5px solid #b90504;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 14px;
+  color: gray;
+  margin-bottom: 1em;
+  background-color: #efefefef;
+}
+
+.content blockquote p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* 소스코드 */
+.content pre code {
+  display: block;
+  font-family: 'consolas';
+  font-size: 16px;
+  border-radius: 6px;
+  padding: 16px;
+  line-height: 1.4em;
+}
