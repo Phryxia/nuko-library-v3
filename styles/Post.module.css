@@ -41,48 +41,66 @@
   margin-bottom: 1rem;
 }
 
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  font-weight: bold;
+  margin-top: 2.5rem;
+  cursor: pointer;
+}
+
 .content h1 {
   font-size: 2.1rem;
-  font-weight: bold;
   padding-bottom: 10px;
   border-bottom: 4px solid rgb(243, 50, 50);
-  cursor: pointer;
 }
 
 .content h2 {
   font-size: 2rem;
-  font-weight: bold;
   padding-bottom: 10px;
   border-bottom: 4px solid rgb(243, 50, 50);
-  cursor: pointer;
 }
 
 .content h3 {
   font-size: 1.8rem;
-  font-weight: bold;
   padding-bottom: 8px;
   border-bottom: 4px solid #e8e8e8;
-  cursor: pointer;
 }
 
 .content h4 {
   font-size: 1.6rem;
-  font-weight: bold;
   padding-bottom: 8px;
   border-bottom: 4px solid #e8e8e8;
-  cursor: pointer;
 }
 
 .content h5 {
   font-size: 1.5rem;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 .content h6 {
   font-size: 1.3rem;
-  font-weight: bold;
-  cursor: pointer;
+}
+
+/* 하위 헤더가 상위 헤더 바로 아래에 나오는 경우에는 간격을 안띄운다 */
+.content h1 + h2,
+.content h1 + h3,
+.content h1 + h4,
+.content h1 + h5,
+.content h1 + h6,
+.content h2 + h3,
+.content h2 + h4,
+.content h2 + h5,
+.content h2 + h6,
+.content h3 + h4,
+.content h3 + h5,
+.content h3 + h6,
+.content h4 + h5,
+.content h4 + h6,
+.content h5 + h6 {
+  margin-top: 1rem;
 }
 
 /* 일반 단락 */
@@ -111,8 +129,8 @@
   background-color: rgb(243, 216, 141);
   color: black;
   font-family: 'consolas';
-  font-size: 1rem;
-  padding: 3px 0.5rem;
+  font-size: 0.7rem;
+  padding: 3px 0.2rem;
   vertical-align: bottom;
   border-radius: 5px;
 }
@@ -147,6 +165,8 @@
   font-size: 0.8rem;
   padding: 16px;
   line-height: 1.4em;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 /* 표 */
