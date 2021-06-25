@@ -30,6 +30,7 @@ npm run dev
 ```markdown
 ---
 date: 2021-06-23
+tags: ['tag1', 'tag2', 'tag3']
 ---
 ```
 

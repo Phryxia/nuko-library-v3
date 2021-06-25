@@ -2,8 +2,21 @@ import path from 'path'
 import { readdir, readFile } from 'fs/promises'
 import MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
+import hljs from 'highlight.js'
 
-const md = MarkdownIt()
+// 하이라이트 js 연동
+const md: MarkdownIt = MarkdownIt({
+  highlight: (str, lang) => {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return `<pre class="hljs"><code>${
+          hljs.highlight(str, { language: lang }).value
+        }</code></pre>`
+      } catch (__) {}
+    }
+    return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`
+  },
+})
 const postsRoot = path.join(process.cwd(), 'posts')
 
 export async function getAllPostsPaths(): Promise<string[]> {

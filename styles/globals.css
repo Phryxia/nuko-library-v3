@@ -40,3 +40,13 @@ h5,
 h6 {
   font-family: 'SebangGothic';
 }
+
+html {
+  font-size: 20px;
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 18px;
+  }
+}

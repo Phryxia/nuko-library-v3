@@ -23,68 +23,71 @@
 }
 
 .header h1 {
-  font-size: 64px;
+  font-size: 3.2rem;
   padding-bottom: 16px;
 }
 
 .header h2 {
-  font-size: 16px;
+  font-size: 0.8rem;
 }
 
 /* 마크다운 CSS */
 .content {
-  font-size: 20px;
+  font-size: 1rem;
+}
+
+.content > * {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .content h1 {
-  font-size: 42px;
+  font-size: 2.1rem;
   font-weight: bold;
   padding-bottom: 10px;
   border-bottom: 4px solid rgb(243, 50, 50);
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 .content h2 {
-  font-size: 40px;
+  font-size: 2rem;
   font-weight: bold;
   padding-bottom: 10px;
   border-bottom: 4px solid rgb(243, 50, 50);
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 .content h3 {
-  font-size: 36px;
+  font-size: 1.8rem;
   font-weight: bold;
   padding-bottom: 8px;
   border-bottom: 4px solid #e8e8e8;
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 .content h4 {
-  font-size: 32px;
+  font-size: 1.6rem;
   font-weight: bold;
   padding-bottom: 8px;
   border-bottom: 4px solid #e8e8e8;
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 .content h5 {
-  font-size: 30px;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 .content h6 {
-  font-size: 26px;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 0.5em;
+  cursor: pointer;
 }
 
 /* 일반 단락 */
 .content p {
   line-height: 1.5em;
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 /* 링크 */
@@ -109,7 +112,7 @@
   color: black;
   font-family: 'consolas';
   font-size: 1rem;
-  padding: 3px 0.5em;
+  padding: 3px 0.5rem;
   vertical-align: bottom;
   border-radius: 5px;
 }
@@ -117,43 +120,45 @@
 /* 인용 */
 .content blockquote {
   border-left: 5px solid #b90504;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   padding-left: 14px;
   color: gray;
-  margin-top: 1em;
-  margin-bottom: 1em;
   background-color: #efefef;
   box-shadow: 0 2px 5px -2px black;
 }
 
 .content blockquote p {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 1rem;
+}
+
+.content blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 /* 소스코드 */
+.content pre {
+  border-radius: 6px;
+}
+
 .content pre code {
   display: block;
   font-family: 'consolas';
-  font-size: 16px;
-  border-radius: 6px;
+  font-size: 0.8rem;
   padding: 16px;
   line-height: 1.4em;
-  margin-bottom: 1em;
 }
 
+/* 표 */
 .content table {
   width: 100%;
-  margin-top: 1em;
-  margin-bottom: 1em;
   border-collapse: separate;
   border-spacing: 0 6px;
-  font-size: 16px;
+  font-size: 0.8rem;
 }
 
 .content table tr {
-  height: 3em;
+  height: 2rem;
   box-shadow: 0 3px 5px -3px black;
   background-color: #fcfcfcfc;
 }
@@ -166,22 +171,18 @@
 .content table th {
   text-align: left;
   vertical-align: middle;
-  padding: 1em;
+  padding: 0.8rem;
 }
 
 .content table td {
   vertical-align: middle;
-  padding: 1em;
+  padding: 0.8rem;
 }
 
+/* 리스트 */
 .content li {
-  margin-left: 1em;
-  line-height: 1.5em;
-}
-
-.content ul {
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-left: 1rem;
+  line-height: 1.5rem;
 }
 
 .content ul li {
@@ -190,11 +191,6 @@
 
 .content ol li {
   list-style-type: decimal;
-}
-
-.content ol {
-  margin-top: 1em;
-  margin-bottom: 1em;
 }
 
 .content ol li::marker {
@@ -208,10 +204,10 @@
 }
 
 .tags_container span {
-  font-size: 0.8em;
+  font-size: 0.8rem;
   background-color: rgb(243, 50, 50);
   color: white;
   padding: 3px 6px;
-  margin-right: 1em;
+  margin-right: 0.5rem;
   box-shadow: 0 0 3px black;
 }

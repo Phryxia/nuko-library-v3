@@ -1,11 +1,16 @@
 import '/styles/reset.css'
 import '/styles/globals.css'
 import 'highlight.js/styles/monokai-sublime.css'
+import Head from 'next/head'
 import type { AppProps } from 'next/app'
-import { useEffect } from 'react'
-import hljs from 'highlight.js'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
-  useEffect(() => hljs.highlightAll(), [])
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }

@@ -1,4 +1,5 @@
 import Linker, { LinkerProps } from './linker'
+import { LinkerContextProvider } from './linkerContext'
 import styles from '/styles/Linker.module.css'
 import classNames from 'classnames/bind'
 
@@ -11,7 +12,9 @@ interface FooterProps {
 export default function Footer({ tree }: FooterProps) {
   return (
     <div className={cx('linker_container')}>
-      <Linker {...tree} />
+      <LinkerContextProvider>
+        <Linker {...tree} />
+      </LinkerContextProvider>
     </div>
   )
 }
