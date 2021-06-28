@@ -1,3 +1,8 @@
+---
+date: 2021-04-01 16:47
+tags: ['react', 'useCallback', 'front-end', 'function']
+---
+
 리액트를 입문한 지 얼마 안되는 사람들이 저지르는 흔한 실수는, `onclick` 같은 이벤트 핸들러 함수를 인라인으로 작성하는 것이다.
 
 ```javascript
