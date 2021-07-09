@@ -1,6 +1,6 @@
 ---
 date: 2021-06-25 17:10
-tags: ['wsl', 'windows', 'hosts', 'localhost', '로컬서버']
+tags: ['wsl', 'windows', 'hosts', 'localhost']
 ---
 
 # 개요
