@@ -30,7 +30,10 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual'
     }
+  }, [])
 
+  // 포스트 영역의 HTML이 바뀔 때마다 hydrate 해줘야 함
+  useEffect(() => {
     // 타입가드. 논리적으로는 발생안함
     if (!contentDom.current) return
 
@@ -60,11 +63,13 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
         router.push(`#${header.id}`)
       }
     })
+  }, [content])
 
-    // 페이지에 랜딩했을 때 fragment가 있으면 거기로 이동
+  // 페이지에 랜딩했을 때 fragment가 있으면 거기로 이동
+  useEffect(() => {
     const fragment = router.asPath.split('#')[1] ?? ''
     document.getElementById(fragment)?.scrollIntoView(true)
-  }, [])
+  }, [router.asPath])
 
   return (
     <>
