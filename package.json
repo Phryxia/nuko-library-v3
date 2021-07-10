@@ -4,12 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@netlify/plugin-nextjs": "^3.6.3",
     "dayjs": "^1.10.5",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.0.1",
