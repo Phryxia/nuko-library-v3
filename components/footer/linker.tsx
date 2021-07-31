@@ -33,19 +33,19 @@ export default function Linker({ title, path, childs = [] }: LinkerProps) {
     <div className={cx('linker', { isFolder })}>
       {isFolder ? (
         <>
-          <div onClick={handleClick}>
+          <a className={cx('linker_row')} onClick={handleClick}>
             <span className={cx('arrow', { isOpen })} />
-            <a>{title}</a>
-          </div>
+            <span className={cx('linker_label')}>{title}</span>
+          </a>
 
           {/* 자식 */}
-          {isOpen && childs.map((child, index) => <Linker key={index} {...child} />)}
+          {isOpen && childs.map((child) => <Linker key={child.path} {...child} />)}
         </>
       ) : (
         <Link href={path} passHref>
-          <div>
-            <a className={cx({ isSelected })}>{title}</a>
-          </div>
+          <a className={cx('linker_row')}>
+            <span className={cx('linker_label', { isSelected })}>{title}</span>
+          </a>
         </Link>
       )}
     </div>
