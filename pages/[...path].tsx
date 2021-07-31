@@ -113,7 +113,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   const paths = postsPaths.map((path) => ({
     params: {
-      path: path.replace('.md', '').split('/'),
+      path: path
+        .replace('.md', '')
+        .split('/')
+        .map((token) => encodeURIComponent(token)),
     },
   }))
 
@@ -124,7 +127,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const path = (context.params?.path as string[]) ?? []
+  const path = ((context.params?.path as string[]) ?? []).map((token) =>
+    decodeURIComponent(token)
+  )
 
   const { content, date, tags } = await getPost(path.join('/') + '.md')
 
@@ -147,7 +152,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       if (!child) {
         child = {
           title: token,
-          path: `${current.path}/${token}`,
+          path: `${current.path}/${encodeURIComponent(encodeURIComponent(token))}`,
           childs: [],
         }
         current.childs.push(child)
