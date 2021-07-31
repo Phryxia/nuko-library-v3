@@ -25,6 +25,7 @@
 .header h1 {
   font-size: 3.2rem;
   padding-bottom: 16px;
+  line-height: 1.3em;
 }
 
 .header h2 {
