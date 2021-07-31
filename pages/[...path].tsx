@@ -94,9 +94,11 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
             <>
               <hr />
               <div className={cx('tags_container')}>
-                Keywords:{' '}
+                <span>Keywords:</span>
                 {tags.map((tag, index) => (
-                  <span key={index}>#{tag}</span>
+                  <span className={cx('tags')} key={index}>
+                    #{tag}
+                  </span>
                 ))}
               </div>
             </>

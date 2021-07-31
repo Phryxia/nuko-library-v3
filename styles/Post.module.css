@@ -219,15 +219,25 @@
 
 /* 태그 */
 .tags_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   margin-top: 20px;
-  vertical-align: middle;
+  line-height: 2rem;
 }
 
-.tags_container span {
+.tags_container span:first-child {
+  padding-right: 4px;
+}
+
+.tags {
   font-size: 0.8rem;
   background-color: rgb(243, 50, 50);
   color: white;
   padding: 3px 6px;
   margin-right: 0.5rem;
+  margin-bottom: 4px;
   box-shadow: 0 0 3px black;
+  line-height: 1rem;
 }
