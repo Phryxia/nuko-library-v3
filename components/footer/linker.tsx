@@ -39,7 +39,7 @@ export default function Linker({ title, path, childs = [] }: LinkerProps) {
           {isOpen && childs.map((child, index) => <Linker key={index} {...child} />)}
         </>
       ) : (
-        <Link href={path}>
+        <Link href={path} passHref>
           <div>
             <a className={cx({ isSelected })}>{title}</a>
           </div>
