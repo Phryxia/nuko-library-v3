@@ -78,6 +78,16 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
         <meta name="keywords" content={tags.join(', ')} />
         <meta name="author" content="gfnuko" />
         <meta lang="ko" />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:image"
+          content="https://www.gravatar.com/avatar/a26b8e267667d62e3e62d7e1fc09009a"
+        />
+        <meta
+          property="og:url"
+          content={`https://nuko-library-v3.vercel.app/${router.asPath}`}
+        />
       </Head>
 
       <div className={cx('top_container')}>
