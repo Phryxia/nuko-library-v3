@@ -77,6 +77,7 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
         <title>{title}</title>
         <meta name="keywords" content={tags.join(', ')} />
         <meta name="author" content="gfnuko" />
+        <meta lang="ko" />
       </Head>
 
       <div className={cx('top_container')}>
