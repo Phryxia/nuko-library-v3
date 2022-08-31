@@ -30,13 +30,13 @@ export default function Linker({ title, path, childs = [] }: LinkerProps) {
 
   const isFolder = childs.length > 0
   return (
-    <div className={cx('linker', { isFolder })}>
+    <div className={cx('linker')}>
       {isFolder ? (
         <>
-          <a className={cx('linker_row')} onClick={handleClick}>
+          <button className={cx('linker_row', { isFolder: true })} onClick={handleClick}>
             <span className={cx('arrow', { isOpen })} />
-            <span className={cx('linker_label')}>{title}</span>
-          </a>
+            {title}
+          </button>
 
           {/* 자식 */}
           {isOpen && childs.map((child) => <Linker key={child.path} {...child} />)}
