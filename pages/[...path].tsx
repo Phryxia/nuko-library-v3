@@ -186,7 +186,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       title: path[path.length - 1],
       content,
-      date: dayjs(date).format('YYYY-MM-DD hh:mm'),
+      date: dayjs(date).format('YYYY-MM-DD'),
       tree,
       tags,
     },
