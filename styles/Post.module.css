@@ -6,40 +6,53 @@
 
   .top_container {
     width: 100%;
-    max-width: 960px;
-    background-color: #e8e8e8;
+    max-width: 920px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     .card {
       box-shadow: 0 2px 6px black;
       margin-bottom: 20px;
-      padding: 32px 6%;
+      padding: 32px 53px 17px 53px;
 
-      color: #444;
-      background-color: #f6f6f6;
+      color: var(--content-font-color);
+      background-color: var(--content-background);
+
+      /* 콘텐츠 최소 높이를 보장하기 위함 */
+      &.content-container {
+        flex: 1;
+      }
     }
 
     .header {
-      background-color: var(--emphasize-color);
-      color: #f0f0f0;
+      padding-top: 40px;
+      padding-bottom: 60px;
+      background-color: var(--javagray);
+      color: var(--header-font-color);
 
       h1 {
-        font-size: 3.2rem;
+        font-family: var(--header-font), serif;
+        font-size: 2.4rem;
         padding-bottom: 16px;
-        line-height: 1.3em;
+        line-height: 1.5em;
       }
 
       h2 {
-        font-size: 0.8rem;
+        font-family: var(--header-font), serif;
+        margin-top: 1rem;
+        font-size: 1.2rem;
       }
     }
 
     /* 마크다운 CSS */
     .content {
       font-size: 1rem;
+      font-family: var(--content-font), sans-serif;
 
       > * {
-        margin-top: 1rem;
-        margin-bottom: 10px;
+        margin: 1.5rem 0;
       }
 
       h1,
@@ -49,13 +62,13 @@
       h5,
       h6 {
         font-weight: bold;
-        margin-top: 3rem;
-        margin-bottom: 1.2rem;
+        margin-top: 6.8rem;
+        margin-bottom: 2rem;
         cursor: pointer;
       }
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
         padding-bottom: 15px;
         border-bottom: 4px solid var(--emphasize-color-bright);
       }
@@ -63,7 +76,7 @@
       h2 {
         font-size: 2rem;
         padding-bottom: 14px;
-        border-bottom: 4px solid var(--emphasize-color-bright);
+        border-bottom: 4px solid #888;
       }
 
       h3 {
@@ -111,8 +124,8 @@
 
       /* 일반 단락 */
       p {
-        line-height: 1.5em;
-        margin-bottom: 10px;
+        line-height: 1.7em;
+        text-align: justify;
       }
 
       /* 이미지 */
@@ -143,9 +156,9 @@
 
       /* 인라인 소스코드 */
       p code {
-        background-color: var(--code-background);
-        color: #eee;
-        font-family: 'consolas';
+        background-color: var(--inline-code-background);
+        color: var(--inline-code-font-color);
+        font-family: var(--code-font), monospace;
         font-size: 0.8rem;
         padding: 3px 0.3rem;
         vertical-align: bottom;
@@ -165,6 +178,7 @@
 
       blockquote p {
         margin-bottom: 1rem;
+        font-family: var(--quote-font), serif;
       }
 
       blockquote p:last-child {
@@ -174,11 +188,10 @@
       /* 소스코드 */
       pre {
         border-radius: 6px;
-        margin: 0 2px;
 
         code {
           display: block;
-          font-family: 'consolas';
+          font-family: var(--code-font), monospace;
           font-size: 0.8rem;
           padding: 16px;
           line-height: 1.4em;
@@ -189,7 +202,7 @@
         /* hljs의 도움을 받지 않는 두 번 탭한 경우 */
         &:not([class~='hljs']) {
           background: var(--code-background);
-          color: #eee;
+          color: var(--code-font-default-color);
         }
       }
 
@@ -199,7 +212,9 @@
         min-width: 360px;
         border-collapse: separate;
         border-spacing: 0 6px;
-        font-size: 0.8rem;
+        font-family: var(--quote-font), serif;
+        font-size: 0.9rem;
+        line-height: 1.2rem;
 
         tr {
           height: 2rem;
@@ -256,10 +271,12 @@
       ol li::marker {
         font-weight: bold;
       }
-
-      /* 이미지 */
     }
   }
+}
+
+.tag-start {
+  margin-top: 6rem;
 }
 
 /* 태그 */
@@ -278,7 +295,7 @@
 
 .tags {
   font-size: 0.8rem;
-  background-color: rgb(243, 50, 50);
+  background-color: var(--javagray);
   color: white;
   padding: 3px 6px;
   margin-right: 0.5rem;

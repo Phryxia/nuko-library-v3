@@ -97,7 +97,7 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
       <div className={cx('root')}>
         <div className={cx('top_container')}>
           <Header title={title} date={date} />
-          <div className={cx('card')}>
+          <div className={cx('card', 'content-container')}>
             {/* 마크다운 내용 */}
             <div
               className={cx('content')}
@@ -108,7 +108,7 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
             {/* 태그 */}
             {tags.length > 0 && (
               <>
-                <hr />
+                <hr className={cx('tag-start')} />
                 <div className={cx('tags_container')}>
                   <span>Keywords:</span>
                   {tags.map((tag, index) => (
