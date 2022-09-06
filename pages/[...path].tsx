@@ -88,34 +88,40 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
           property="og:url"
           content={`https://nuko-library-v3.vercel.app/${router.asPath}`}
         />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+        />
       </Head>
 
-      <div className={cx('top_container')}>
-        <Header title={title} date={date} />
-        <div className={cx('card')}>
-          {/* 마크다운 내용 */}
-          <div
-            className={cx('content')}
-            dangerouslySetInnerHTML={{ __html: content }}
-            ref={contentDom}
-          ></div>
+      <div className={cx('root')}>
+        <div className={cx('top_container')}>
+          <Header title={title} date={date} />
+          <div className={cx('card', 'content-container')}>
+            {/* 마크다운 내용 */}
+            <div
+              className={cx('content')}
+              dangerouslySetInnerHTML={{ __html: content }}
+              ref={contentDom}
+            ></div>
 
-          {/* 태그 */}
-          {tags.length > 0 && (
-            <>
-              <hr />
-              <div className={cx('tags_container')}>
-                <span>Keywords:</span>
-                {tags.map((tag, index) => (
-                  <span className={cx('tags')} key={index}>
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            </>
-          )}
+            {/* 태그 */}
+            {tags.length > 0 && (
+              <>
+                <hr className={cx('tag-start')} />
+                <div className={cx('tags_container')}>
+                  <span>Keywords:</span>
+                  {tags.map((tag, index) => (
+                    <span className={cx('tags')} key={index}>
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+          <Footer tree={tree} />
         </div>
-        <Footer tree={tree} />
       </div>
     </>
   )
@@ -180,7 +186,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       title: path[path.length - 1],
       content,
-      date: dayjs(date).format('YYYY-MM-DD hh:mm'),
+      date: dayjs(date).format('YYYY-MM-DD'),
       tree,
       tags,
     },

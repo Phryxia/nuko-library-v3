@@ -12,7 +12,7 @@ export default function Header({ title, date }: HeaderProps) {
   return (
     <div className={cx('card', 'header')}>
       <h1>{title}</h1>
-      <h2>By nuko, Last updated on {date}</h2>
+      <h2>Last updated on {date}</h2>
     </div>
   )
 }

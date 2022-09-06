@@ -1,0 +1,27 @@
+:root {
+  --total-background: #eee; /* for dark #1e1f1c*/
+  --emphasize-color: #d23035;
+  --emphasize-color-bright: #f55666;
+  --emphasize-color-dark: #b90504;
+  --javagray: rgb(52, 53, 47);
+
+  --header-font: 'TmoneyRoundWindExtraBold';
+  --header-font-color: #f0f0f0;
+
+  /* 일반 콘텐츠 */
+  --content-background: #f6f6f6;
+  --content-font-color: #444;
+  --content-font: 'Pretendard-Regular';
+
+  /* 인용 */
+  --quote-font: 'Nanum Myeongjo';
+
+  /* 코드 */
+  --code-background: #23241f;
+  --code-font: 'consolas';
+  --code-font-default-color: #eee;
+
+  /* 인라인 코드 */
+  --inline-code-background: #f2dee2;
+  --inline-code-font-color: #333;
+}
