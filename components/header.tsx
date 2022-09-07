@@ -11,7 +11,9 @@ interface HeaderProps {
 export default function Header({ title, date }: HeaderProps) {
   return (
     <div className={cx('card', 'header')}>
-      <h1>{title}</h1>
+      <a href="#" className={cx('title')}>
+        {title}
+      </a>
       <h2>Last updated on {date}</h2>
     </div>
   )
