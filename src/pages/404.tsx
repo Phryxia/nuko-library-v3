@@ -5,7 +5,7 @@ export default function Custom404() {
   const router = useRouter()
 
   useEffect(() => {
-    router.replace('/error')
+    router.replace('/posts/error')
   }, [])
 
   return null
