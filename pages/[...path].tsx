@@ -25,12 +25,15 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
   const contentDom = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // 새로고침하거나 재방문했을 때 스크롤 위치를 저장하지 않음
+    // Fragment가 있을 때에만 새로고침 시 위치를 저장하지 않음
     // 이걸 안해주면 fragment 위치로 안가짐
-    if ('scrollRestoration' in history) {
+    const fragment = router.asPath.split('#')[1]
+    if (fragment) {
       history.scrollRestoration = 'manual'
+    } else {
+      history.scrollRestoration = 'auto'
     }
-  }, [])
+  }, [router.asPath])
 
   // 포스트 영역의 HTML이 바뀔 때마다 hydrate 해줘야 함
   useEffect(() => {
