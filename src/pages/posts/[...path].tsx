@@ -9,6 +9,7 @@ import Footer from '@src/components/footer'
 import { LinkerProps } from '@src/components/footer/linker'
 import styles from '@src/styles/Post.module.css'
 import classNames from 'classnames/bind'
+import { integers, map, reduce } from '@src/utils'
 
 const cx = classNames.bind(styles)
 
@@ -24,51 +25,39 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
   const router = useRouter()
   const contentDom = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    // Fragment가 있을 때에만 새로고침 시 위치를 저장하지 않음
-    // 이걸 안해주면 fragment 위치로 안가짐
-    const fragment = router.asPath.split('#')[1]
-    if (fragment) {
-      history.scrollRestoration = 'manual'
-    } else {
-      history.scrollRestoration = 'auto'
-    }
-  }, [router.asPath])
-
   // 포스트 영역의 HTML이 바뀔 때마다 hydrate 해줘야 함
   useEffect(() => {
     // 타입가드. 논리적으로는 발생안함
     if (!contentDom.current) return
 
     // 헤더에 id 붙이기
-    const headers = [
-      ...contentDom.current.getElementsByTagName('h1'),
-      ...contentDom.current.getElementsByTagName('h2'),
-      ...contentDom.current.getElementsByTagName('h3'),
-      ...contentDom.current.getElementsByTagName('h4'),
-      ...contentDom.current.getElementsByTagName('h5'),
-      ...contentDom.current.getElementsByTagName('h6'),
-    ]
+    const headings = reduce(
+      map(integers(6), (level) =>
+        contentDom.current!.querySelectorAll(`h${level + 1}`)
+      ) as Generator<NodeListOf<HTMLHeadingElement>>,
+      (result, nodeList) => [...result, ...nodeList],
+      [] as HTMLHeadingElement[]
+    )
 
     // 헤더를 누르면 URI fragment를 생성
-    headers.forEach((header) => {
+    headings.forEach((heading) => {
       // innerText가 같은 것 끼리 모음
-      const duplicatedDoms = headers.filter(({ innerText }) => innerText === header.innerText)
-      const duplicatedOrder = duplicatedDoms.indexOf(header)
+      const duplicatedDoms = headings.filter(({ innerText }) => innerText === heading.innerText)
+      const duplicatedOrder = duplicatedDoms.indexOf(heading)
 
       // 2번째 중복부터는 추가 id를 붙임
-      header.id = `${encodeURIComponent(header.innerText)}${
+      heading.id = `${encodeURIComponent(heading.innerText)}${
         duplicatedOrder > 0 ? `-${duplicatedOrder}` : ''
       }`
 
-      // 이벤트 핸들러
-      header.onclick = () => {
-        router.push(`#${header.id}`)
-      }
+      const marker = heading.querySelector('a:nth-child(1)') as HTMLAnchorElement
+      marker.href = `#${heading.id}`
     })
   }, [content])
 
   // 페이지에 랜딩했을 때 fragment가 있으면 거기로 이동
+  // 내용물 빌드 타임 주입이 MarkdownIt 구조로는 불가능하기 때문에, 부득이하게 CSR 주입을 하고
+  // 그것 때문에 최초에는 해당 ID가 없음. 위의 훅이 실행된 뒤에야 가능.
   useEffect(() => {
     const fragment = router.asPath.split('#')[1] ?? ''
     document.getElementById(fragment)?.scrollIntoView(true)

@@ -61,10 +61,22 @@
       h4,
       h5,
       h6 {
+        position: relative;
         font-weight: bold;
         margin-top: 6.8rem;
         margin-bottom: 2rem;
-        cursor: pointer;
+
+        /* heading 옆에 카피 버튼 */
+        & > a:nth-child(1) {
+          position: absolute;
+          left: -1.5rem;
+          color: var(--content-font-color-bright);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--emphasize-color-bright);
+          }
+        }
       }
 
       h1 {

@@ -3,6 +3,7 @@ import { readdir, readFile } from 'fs/promises'
 import MarkdownIt from 'markdown-it'
 import matter from 'gray-matter'
 import hljs from 'highlight.js'
+import { addCustomRenderer } from './renderer'
 
 // 하이라이트 js 연동
 const md: MarkdownIt = MarkdownIt({
@@ -17,6 +18,8 @@ const md: MarkdownIt = MarkdownIt({
     return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`
   },
 })
+addCustomRenderer(md)
+
 const postsRoot = path.join(process.cwd(), 'posts')
 
 export async function getAllPostsPaths(): Promise<string[]> {
