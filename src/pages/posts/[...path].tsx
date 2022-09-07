@@ -3,11 +3,11 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useEffect, useRef } from 'react'
 import dayjs from 'dayjs'
-import { getAllPostsPaths, getPost } from '/backend/md-scan'
-import Header from '/components/header'
-import Footer from '/components/footer'
-import { LinkerProps } from '/components/footer/linker'
-import styles from '/styles/Post.module.css'
+import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
+import Header from '@src/components/header'
+import Footer from '@src/components/footer'
+import { LinkerProps } from '@src/components/footer/linker'
+import styles from '@src/styles/Post.module.css'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
@@ -160,7 +160,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const tree: LinkerProps = {
     title: 'root',
-    path: '',
+    path: '/posts',
     childs: [],
   }
 

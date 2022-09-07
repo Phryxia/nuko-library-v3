@@ -1,4 +1,4 @@
-import styles from '/styles/Post.module.css'
+import styles from '@src/styles/Post.module.css'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)

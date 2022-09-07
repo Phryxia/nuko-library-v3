@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import styles from '/styles/Linker.module.css'
+import styles from '@src/styles/Linker.module.css'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
