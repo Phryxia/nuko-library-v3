@@ -1,0 +1,29 @@
+@import './common.pcss';
+
+.header {
+  @mixin card;
+
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  background-color: var(--javagray);
+  color: var(--header-font-color);
+
+  .title {
+    font-family: var(--header-font), serif;
+    font-size: 2.5rem;
+    padding-bottom: 16px;
+    line-height: 1.5em;
+  }
+
+  h2 {
+    font-family: var(--header-font), serif;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  .nav-button {
+    position: absolute;
+    right: 53px;
+  }
+}

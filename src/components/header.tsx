@@ -1,9 +1,9 @@
-import styles from '@src/styles/Post.module.css'
+import styles from '@src/styles/Header.module.css'
 import classNames from 'classnames/bind'
+const cx = classNames.bind(styles)
+
 import { useState } from 'react'
 import Linker, { LinkerProps } from './linker'
-
-const cx = classNames.bind(styles)
 
 interface HeaderProps {
   title: string
@@ -19,7 +19,7 @@ export default function Header({ title, date, tree }: HeaderProps) {
   }
 
   return (
-    <div className={cx('card', 'header')}>
+    <div className={classNames(cx('card'), cx('header'))}>
       <a href="#" className={cx('title')}>
         {title}
       </a>

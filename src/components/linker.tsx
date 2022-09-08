@@ -1,10 +1,10 @@
+import styles from '@src/styles/Linker.module.css'
+import classNames from 'classnames/bind'
+const cx = classNames.bind(styles)
+
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import styles from '@src/styles/Linker.module.css'
-import classNames from 'classnames/bind'
-
-const cx = classNames.bind(styles)
 
 /*
   path: 이 Linker가 보내는 페이지의 상대 경로, 2번 인코딩 됐음

@@ -1,3 +1,7 @@
+import styles from '@src/styles/Post.module.css'
+import classNames from 'classnames/bind'
+const cx = classNames.bind(styles)
+
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -7,11 +11,7 @@ import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
 import { LinkerProps } from '@src/components/linker'
-import styles from '@src/styles/Post.module.css'
-import classNames from 'classnames/bind'
 import { integers, map, reduce } from '@src/utils'
-
-const cx = classNames.bind(styles)
 
 interface PostProps {
   title: string
