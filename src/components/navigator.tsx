@@ -2,7 +2,7 @@ import styles from '@src/styles/Linker.module.css'
 import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
-import { useState } from 'react'
+import { forwardRef, Ref, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
@@ -42,7 +42,7 @@ function NavigatorNode({ title, path, childs = [] }: NavigatorProps) {
           {isOpen && (
             <div className={cx('children')}>
               {childs.map((child) => (
-                <Navigator key={child.path} {...child} />
+                <NavigatorNode key={child.path} {...child} />
               ))}
             </div>
           )}
@@ -58,10 +58,10 @@ function NavigatorNode({ title, path, childs = [] }: NavigatorProps) {
   )
 }
 
-export default function Navigator(props: NavigatorProps) {
+export default forwardRef(function Navigator(props: NavigatorProps, ref: Ref<HTMLElement>) {
   return (
-    <nav>
+    <nav ref={ref}>
       <NavigatorNode {...props} />
     </nav>
   )
-}
+})

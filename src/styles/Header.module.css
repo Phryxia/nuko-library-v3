@@ -3,11 +3,11 @@
 .header {
   @mixin card;
 
-  position: relative;
   padding-top: 40px;
-  padding-bottom: 60px;
+
   background-color: var(--javagray);
   color: var(--header-font-color);
+  position: relative;
 
   .title {
     font-family: var(--header-font), serif;
@@ -22,8 +22,32 @@
     font-size: 1rem;
   }
 
+  .nav-container {
+    transition: height 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    overflow-y: hidden;
+    margin-top: 60px;
+    border-top: 3px double var(--content-font-color);
+    border-bottom: 3px double var(--content-font-color);
+  }
+
   .nav-button {
-    position: absolute;
-    right: 53px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25px;
+
+    .arrow {
+      width: 7px;
+      height: 7px;
+      border-right: 1px solid var(--content-font-color-bright);
+      border-top: 1px solid var(--content-font-color-bright);
+      transform: rotate(135deg) translate(0, 50%);
+      transition: transform 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      &.open {
+        transform: rotate(-45deg);
+      }
+    }
   }
 }
