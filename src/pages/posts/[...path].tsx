@@ -84,6 +84,10 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
         />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"
+        />
       </Head>
 
       <div className={cx('root')}>

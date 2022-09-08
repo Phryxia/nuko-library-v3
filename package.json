@@ -10,15 +10,17 @@
   "dependencies": {
     "dayjs": "^1.10.5",
     "gray-matter": "^4.0.3",
-    "highlight.js": "^11.0.1",
-    "markdown-it": "^12.0.6",
+    "katex": "^0.16.2",
     "next": "11.0.1",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "showdown": "^2.1.0",
+    "showdown-highlight": "^3.0.0"
   },
   "devDependencies": {
-    "@types/markdown-it": "^12.0.2",
+    "@types/katex": "^0.14.0",
     "@types/react": "17.0.11",
+    "@types/showdown": "^2.0.0",
     "autoprefixer": "^10.4.8",
     "eslint-config-next": "11.0.1",
     "postcss-import": "^15.0.0",

@@ -1,12 +1,7 @@
-import MarkdownIt from 'markdown-it'
+import type { ShowdownExtension } from 'showdown'
 
-export function addCustomRenderer(md: MarkdownIt): void {
-  const originalTransformer = md.renderer.rules.heading_open
-
-  md.renderer.rules.heading_open = (tokens, index, options, env, self) => {
-    const innerHtml =
-      originalTransformer?.(tokens, index, options, env, self) ?? `<${tokens[index].tag}>`
-
-    return innerHtml + '<a>§</a>'
-  }
+export const HeadingAnchorExt: ShowdownExtension = {
+  type: 'output',
+  regex: /(<h\d[^>]*>)/g,
+  replace: '$1<a>§</a>',
 }
