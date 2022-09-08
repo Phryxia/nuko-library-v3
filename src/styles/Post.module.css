@@ -1,48 +1,13 @@
+@import './common.pcss';
+
 .root {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @mixin root;
 
-  .top_container {
-    width: 100%;
-    max-width: 920px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .card {
-      box-shadow: 0 2px 6px black;
-      margin-bottom: 20px;
-      padding: 32px 53px 17px 53px;
-
-      color: var(--content-font-color);
-      background-color: var(--content-background);
-
+  .card {
+    @mixin card {
       /* 콘텐츠 최소 높이를 보장하기 위함 */
       &.content-container {
         flex: 1;
-      }
-    }
-
-    .header {
-      padding-top: 40px;
-      padding-bottom: 60px;
-      background-color: var(--javagray);
-      color: var(--header-font-color);
-
-      .title {
-        font-family: var(--header-font), serif;
-        font-size: 2.5rem;
-        padding-bottom: 16px;
-        line-height: 1.5em;
-      }
-
-      h2 {
-        font-family: var(--header-font), serif;
-        margin-top: 1rem;
-        font-size: 1.2rem;
       }
     }
 
@@ -180,17 +145,18 @@
       /* 인용 */
       blockquote {
         border-left: 5px solid var(--emphasize-color);
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 14px;
-        color: gray;
+        padding: 1.2rem 0 1.2rem 18px;
         background-color: #efefef;
         box-shadow: -2px 1px 5px -2px black;
       }
 
       blockquote p {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        margin-right: 1rem;
         font-family: var(--quote-font), serif;
+        color: var(--content-font-color);
+        text-align: left;
+        font-size: 0.93rem;
       }
 
       blockquote p:last-child {
@@ -284,34 +250,34 @@
         font-weight: bold;
       }
     }
+
+    .tag-start {
+      margin-top: 6rem;
+    }
+
+    /* 태그 */
+    .tags_container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+      line-height: 2rem;
+    }
+
+    .tags_container span:first-child {
+      padding-right: 4px;
+    }
+
+    .tags {
+      font-size: 0.8rem;
+      background-color: var(--javagray);
+      color: white;
+      padding: 3px 6px;
+      margin-right: 0.5rem;
+      margin-bottom: 4px;
+      box-shadow: 0 0 3px black;
+      line-height: 1rem;
+    }
   }
-}
-
-.tag-start {
-  margin-top: 6rem;
-}
-
-/* 태그 */
-.tags_container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  margin-top: 20px;
-  line-height: 2rem;
-}
-
-.tags_container span:first-child {
-  padding-right: 4px;
-}
-
-.tags {
-  font-size: 0.8rem;
-  background-color: var(--javagray);
-  color: white;
-  padding: 3px 6px;
-  margin-right: 0.5rem;
-  margin-bottom: 4px;
-  box-shadow: 0 0 3px black;
-  line-height: 1rem;
 }

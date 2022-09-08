@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import styles from '@src/styles/Linker.module.css'
 import classNames from 'classnames/bind'
-
 const cx = classNames.bind(styles)
+
+import { forwardRef, Ref, useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 /*
   path: 이 Linker가 보내는 페이지의 상대 경로, 2번 인코딩 됐음
 */
-export interface LinkerProps {
+export interface NavigatorProps {
   title: string
   path: string
-  childs: LinkerProps[]
+  childs: NavigatorProps[]
 }
 
-export default function Linker({ title, path, childs = [] }: LinkerProps) {
+function NavigatorNode({ title, path, childs = [] }: NavigatorProps) {
   const router = useRouter()
   const currentPath = router.asPath.split('#')[0].split('?')[0]
 
@@ -42,7 +42,7 @@ export default function Linker({ title, path, childs = [] }: LinkerProps) {
           {isOpen && (
             <div className={cx('children')}>
               {childs.map((child) => (
-                <Linker key={child.path} {...child} />
+                <NavigatorNode key={child.path} {...child} />
               ))}
             </div>
           )}
@@ -57,3 +57,11 @@ export default function Linker({ title, path, childs = [] }: LinkerProps) {
     </div>
   )
 }
+
+export default forwardRef(function Navigator(props: NavigatorProps, ref: Ref<HTMLElement>) {
+  return (
+    <nav ref={ref}>
+      <NavigatorNode {...props} />
+    </nav>
+  )
+})

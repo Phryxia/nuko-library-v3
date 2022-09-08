@@ -1,3 +1,7 @@
+import styles from '@src/styles/Post.module.css'
+import classNames from 'classnames/bind'
+const cx = classNames.bind(styles)
+
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
@@ -6,18 +10,14 @@ import dayjs from 'dayjs'
 import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
-import { LinkerProps } from '@src/components/footer/linker'
-import styles from '@src/styles/Post.module.css'
-import classNames from 'classnames/bind'
+import { NavigatorProps } from '@src/components/navigator'
 import { integers, map, reduce } from '@src/utils'
-
-const cx = classNames.bind(styles)
 
 interface PostProps {
   title: string
   content: string
   date: string
-  tree: LinkerProps
+  tree: NavigatorProps
   tags: string[]
 }
 
@@ -88,7 +88,7 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
 
       <div className={cx('root')}>
         <div className={cx('top_container')}>
-          <Header title={title} date={date} />
+          <Header {...{ title, date, tree }} />
           <div className={cx('card', 'content-container')}>
             {/* 마크다운 내용 */}
             <div
@@ -147,7 +147,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 푸터를 위한 작업
   const postsPaths = await getAllPostsPaths()
 
-  const tree: LinkerProps = {
+  const tree: NavigatorProps = {
     title: 'root',
     path: '/posts',
     childs: [],
