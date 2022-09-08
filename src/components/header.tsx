@@ -3,12 +3,12 @@ import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
 import { useState } from 'react'
-import Linker, { LinkerProps } from './linker'
+import Navigator, { NavigatorProps } from './navigator'
 
 interface HeaderProps {
   title: string
   date: string
-  tree: LinkerProps
+  tree: NavigatorProps
 }
 
 export default function Header({ title, date, tree }: HeaderProps) {
@@ -27,7 +27,7 @@ export default function Header({ title, date, tree }: HeaderProps) {
       <button className={cx('nav-button')} onClick={handleNavOpenClick}>
         Nav
       </button>
-      {isNavOpen && <Linker {...tree} />}
+      {isNavOpen && <Navigator {...tree} />}
     </div>
   )
 }

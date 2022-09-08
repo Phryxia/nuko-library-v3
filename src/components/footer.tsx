@@ -2,16 +2,16 @@ import styles from '@src/styles/Footer.module.css'
 import classNames from 'classnames/bind'
 const cx = classNames.bind(styles)
 
-import Linker, { LinkerProps } from './linker'
+import Navigator, { NavigatorProps } from './navigator'
 
 interface FooterProps {
-  tree: LinkerProps
+  tree: NavigatorProps
 }
 
 export default function Footer({ tree }: FooterProps) {
   return (
     <div className={cx('root')}>
-      <Linker {...tree} />
+      <Navigator {...tree} />
     </div>
   )
 }

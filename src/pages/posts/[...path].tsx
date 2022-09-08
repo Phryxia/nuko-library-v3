@@ -10,14 +10,14 @@ import dayjs from 'dayjs'
 import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
-import { LinkerProps } from '@src/components/linker'
+import { NavigatorProps } from '@src/components/navigator'
 import { integers, map, reduce } from '@src/utils'
 
 interface PostProps {
   title: string
   content: string
   date: string
-  tree: LinkerProps
+  tree: NavigatorProps
   tags: string[]
 }
 
@@ -147,7 +147,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   // 푸터를 위한 작업
   const postsPaths = await getAllPostsPaths()
 
-  const tree: LinkerProps = {
+  const tree: NavigatorProps = {
     title: 'root',
     path: '/posts',
     childs: [],
