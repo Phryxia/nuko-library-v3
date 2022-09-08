@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
-import { LinkerProps } from '@src/components/footer/linker'
+import { LinkerProps } from '@src/components/linker'
 import styles from '@src/styles/Post.module.css'
 import classNames from 'classnames/bind'
 import { integers, map, reduce } from '@src/utils'
@@ -88,7 +88,7 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
 
       <div className={cx('root')}>
         <div className={cx('top_container')}>
-          <Header title={title} date={date} />
+          <Header {...{ title, date, tree }} />
           <div className={cx('card', 'content-container')}>
             {/* 마크다운 내용 */}
             <div
