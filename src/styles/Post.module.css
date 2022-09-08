@@ -145,17 +145,18 @@
       /* 인용 */
       blockquote {
         border-left: 5px solid var(--emphasize-color);
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        padding-left: 14px;
-        color: gray;
+        padding: 1.2rem 0 1.2rem 18px;
         background-color: #efefef;
         box-shadow: -2px 1px 5px -2px black;
       }
 
       blockquote p {
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        margin-right: 1rem;
         font-family: var(--quote-font), serif;
+        color: var(--content-font-color);
+        text-align: left;
+        font-size: 0.93rem;
       }
 
       blockquote p:last-child {
