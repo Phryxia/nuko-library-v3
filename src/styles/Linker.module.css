@@ -1,0 +1,52 @@
+.linker {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+
+  .children {
+    margin-left: 1.9rem;
+  }
+
+  .linker_row {
+    display: flex;
+    align-items: center;
+    margin: 3px 0;
+
+    .arrow {
+      position: relative;
+      content: '';
+      display: inline-block;
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 1px solid white;
+      border-top: 1px solid white;
+      transform: rotate(45deg);
+      margin-right: 0.5em;
+      transition: all 150ms cubic-bezier(0.25, 0.1, 0.25, 1);
+
+      &.isOpen {
+        transform: translateY(-3px) rotate(135deg);
+      }
+    }
+
+    .linker_label {
+      padding: 8px 1rem;
+      border-radius: 10px;
+
+      &.isFolder {
+        text-decoration: underline;
+        color: #b082c5;
+
+        &:before {
+          content: './';
+        }
+      }
+
+      &.isSelected {
+        background-color: var(--header-font-color);
+        color: var(--javagray);
+      }
+    }
+  }
+}
