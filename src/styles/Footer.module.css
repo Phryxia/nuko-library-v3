@@ -1,0 +1,10 @@
+@import './common.pcss';
+
+.root {
+  @mixin card;
+
+  padding: 10px 50px;
+  background-color: var(--javagray);
+  color: var(--header-font-color);
+  font-family: var(--content-font);
+}
