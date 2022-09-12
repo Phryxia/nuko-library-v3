@@ -68,6 +68,6 @@ declare module 'loadash'
 
 위치가 꼭 루트일 필요는 없으며, 파일 이름도 `tsconfig.json`에 적어주기만 하면 뭘 쓰든 상관없다.
 
-VSCode 사용 시, 적당히 아무 `.ts` 파일을 열고, `Ctrl + P `를 누른 뒤, `>TypeScript: Restart TS server` 명령을 실행하여 랭귀지 서버를 재부팅하자. 프로젝트의 규모가 작은 경우, 재부팅 없이 바로 적용되기도 한다.
+VSCode 사용 시, 적당히 아무 `.ts` 파일을 열고, <kbd>ctrl</kbd>+<kbd>p</kbd>를 누른 뒤, `>TypeScript: Restart TS server` 명령을 실행하여 랭귀지 서버를 재부팅하자. 프로젝트의 규모가 작은 경우, 재부팅 없이 바로 적용되기도 한다.
 
 `declare module` 문법은 `tsc`에게 그런 모듈이 있다는 것을 알려준다. 하지만 함수의 시그니쳐 등을 설정하지 않았기 때문에 모든 것이 `any` 타입으로 다뤄질 것이다. 자신이 정말 좋다고 생각하는 라이브러리라면, 타입 선언 파일을 PR로 기여해보는 것은 어떨까?
