@@ -37,3 +37,7 @@ html {
 button {
   cursor: pointer;
 }
+
+.katex {
+  white-space: break-spaces !important;
+}

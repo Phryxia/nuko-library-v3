@@ -45,9 +45,12 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
         />
+        {/* Latex */}
         <link
           rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+          integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
+          crossOrigin="anonymous"
         />
       </Head>
 

@@ -1,20 +1,6 @@
 import path from 'path'
 import { readdir, readFile } from 'fs/promises'
-import matter from 'gray-matter'
-import showdown from 'showdown'
-import showdownHljs from 'showdown-highlight'
-import { HeadingAnchorExt } from './renderer'
-
-showdown.setFlavor('github')
-
-const converter = new showdown.Converter({
-  extensions: [
-    showdownHljs({
-      pre: false,
-    }),
-    HeadingAnchorExt,
-  ],
-})
+import { parseFile } from './parse'
 
 const postsRoot = path.join(process.cwd(), 'posts')
 
@@ -44,15 +30,8 @@ export async function getAllPostsPaths(): Promise<string[]> {
   return result
 }
 
-// date format is 'YYYY-MM-DD hh:mm'
 export async function getPost(filePath: string) {
   const absPath = path.join(postsRoot, filePath)
-  const markdown = await readFile(absPath, 'utf8')
-  const {
-    content,
-    data: { date = new Date().toString(), tags = [] },
-  } = matter(markdown)
-
-  const html = converter.makeHtml(content)
-  return { content: html, date, tags }
+  const content = await readFile(absPath, 'utf-8')
+  return parseFile(content)
 }
