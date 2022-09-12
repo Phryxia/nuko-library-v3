@@ -6,11 +6,11 @@ function removeTags(input: string): string {
   return input.replace(/<[^>]+>/g, ' ')
 }
 
-const headingRegExp = /<(h\d)(?:[^>]*)>([^<]*)<\/h\d[^>]*>/
+const headingRegExp = /<(h\d)(?:[^>]*)>(.*)<\/h\d[^>]*>/
 
 export const HeadingAnchorExt: ShowdownExtension = {
   type: 'output',
-  regex: /<h\d[^>]*>[^<]*<\/h\d[^>]*>/g,
+  regex: /<h\d[^>]*>.*<\/h\d[^>]*>/g,
   replace(s: string) {
     const match = headingRegExp.exec(s)
 
