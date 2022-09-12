@@ -1,12 +1,27 @@
-import MarkdownIt from 'markdown-it'
+import type { ShowdownExtension } from 'showdown'
 
-export function addCustomRenderer(md: MarkdownIt): void {
-  const originalTransformer = md.renderer.rules.heading_open
+const Counter = {} as Record<string, number>
 
-  md.renderer.rules.heading_open = (tokens, index, options, env, self) => {
-    const innerHtml =
-      originalTransformer?.(tokens, index, options, env, self) ?? `<${tokens[index].tag}>`
+function removeTags(input: string): string {
+  return input.replace(/<[^>]+>/g, ' ')
+}
 
-    return innerHtml + '<a>§</a>'
-  }
+const headingRegExp = /<(h\d)(?:[^>]*)>(.*)<\/h\d[^>]*>/
+
+export const HeadingAnchorExt: ShowdownExtension = {
+  type: 'output',
+  regex: /<h\d[^>]*>.*<\/h\d[^>]*>/g,
+  replace(s: string) {
+    const match = headingRegExp.exec(s)
+
+    if (!match) return s
+
+    const tag = match[1]
+    const innerHtml = match[2]
+    const content = encodeURIComponent(removeTags(innerHtml))
+    const dup = (Counter[content] ??= (Counter[content] ?? -1) + 1)
+    const id = `${content}-${dup}`
+
+    return `<${tag} id="${id}"><a href="#${id}">§</a>${innerHtml}</${tag}>`
+  },
 }

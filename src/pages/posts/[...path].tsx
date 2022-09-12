@@ -5,13 +5,12 @@ const cx = classNames.bind(styles)
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import dayjs from 'dayjs'
 import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
 import { NavigatorProps } from '@src/components/navigator'
-import { integers, map, reduce } from '@src/utils'
 
 interface PostProps {
   title: string
@@ -24,44 +23,6 @@ interface PostProps {
 export default function Post({ title, content, date, tags, tree }: PostProps) {
   const router = useRouter()
   const contentDom = useRef<HTMLDivElement>(null)
-
-  // 포스트 영역의 HTML이 바뀔 때마다 hydrate 해줘야 함
-  useEffect(() => {
-    // 타입가드. 논리적으로는 발생안함
-    if (!contentDom.current) return
-
-    // 헤더에 id 붙이기
-    const headings = reduce(
-      map(integers(6), (level) =>
-        contentDom.current!.querySelectorAll(`h${level + 1}`)
-      ) as Generator<NodeListOf<HTMLHeadingElement>>,
-      (result, nodeList) => [...result, ...nodeList],
-      [] as HTMLHeadingElement[]
-    )
-
-    // 헤더를 누르면 URI fragment를 생성
-    headings.forEach((heading) => {
-      // innerText가 같은 것 끼리 모음
-      const duplicatedDoms = headings.filter(({ innerText }) => innerText === heading.innerText)
-      const duplicatedOrder = duplicatedDoms.indexOf(heading)
-
-      // 2번째 중복부터는 추가 id를 붙임
-      heading.id = `${encodeURIComponent(heading.innerText)}${
-        duplicatedOrder > 0 ? `-${duplicatedOrder}` : ''
-      }`
-
-      const marker = heading.querySelector('a:nth-child(1)') as HTMLAnchorElement
-      marker.href = `#${heading.id}`
-    })
-  }, [content])
-
-  // 페이지에 랜딩했을 때 fragment가 있으면 거기로 이동
-  // 내용물 빌드 타임 주입이 MarkdownIt 구조로는 불가능하기 때문에, 부득이하게 CSR 주입을 하고
-  // 그것 때문에 최초에는 해당 ID가 없음. 위의 훅이 실행된 뒤에야 가능.
-  useEffect(() => {
-    const fragment = router.asPath.split('#')[1] ?? ''
-    document.getElementById(fragment)?.scrollIntoView(true)
-  }, [router.asPath])
 
   return (
     <>
@@ -83,6 +44,13 @@ export default function Post({ title, content, date, tags, tree }: PostProps) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+        />
+        {/* Latex */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css"
+          integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X"
+          crossOrigin="anonymous"
         />
       </Head>
 
