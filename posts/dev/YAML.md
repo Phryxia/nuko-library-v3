@@ -1,5 +1,5 @@
 ---
-date: 2022-09-15 18:31
+date: 2022-09-16 12:21
 tags: ['yaml', 'json']
 ---
 
@@ -36,7 +36,7 @@ Flow Style에서는 공백이나 개행이 별 의미가 없으나, **Block Styl
 
 ## Sequence 
 
-뭔가를 나열한 것
+뭔가를 나열한 것. JSON의 배열에 대응된다.
 
 ### Block Sequence
 
@@ -59,7 +59,7 @@ Comact하게 중첩을 줄 안 띄우고 하는 방법도 있긴 한데, 정식 
 
 ## Mappings
 
-JSON의 Object에 해당하는 것. key-value 쌍들을 모은 것. 주의할 점으로 인덴트가 들어가면 별개 노드로 취급한다.
+key-value 쌍들을 모은 것. JSON의 Object에 대응된다.
 
 ### Block Mappings
 
@@ -83,6 +83,38 @@ key5: # null
     key4: value4
   },
   key5: null
+}
+```
+
+## Sequence와 Block의 혼용
+
+### Block Style
+
+```yaml
+daily options:
+  - sleep
+  - game:
+      mobile: blue archive
+      pc:
+        - genshin impact
+        - djmax respect
+  - work
+```
+
+### Flow Style
+
+```yaml
+{
+  daily options: [
+    sleep,
+    {
+      game: {
+        mobile: blue archive,
+        pc: [genshin impact, djmax respect]
+      }
+    },
+    work
+  ]
 }
 ```
 
