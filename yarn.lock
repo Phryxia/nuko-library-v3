@@ -2714,10 +2714,10 @@ shell-quote@1.7.2:
   resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.2.tgz#67a7d02c76c9da24f99d20808fcaded0e0e04be2"
   integrity sha512-mRz/m/JVscCrkMyPqHc/bczi3OQHkLTqXHEFu0zDhK/qfv3UcOA4SVmRCLmos4bhjr9ekVQubj/R7waKapmiQg==
 
-showdown-highlight@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/showdown-highlight/-/showdown-highlight-3.0.0.tgz#928dc0db4d0c259000cd78244273500cec5ca617"
-  integrity sha512-xrMPNGaECoFMueD3uortV5r69NFY4oZp50QTrHf21T6aYgBO6FBdv5ibBvGd2atd/FeSsPjUhJOipLL6pwELhg==
+showdown-highlight@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/showdown-highlight/-/showdown-highlight-3.1.0.tgz#c9ec902c35100e1ac3433761cdb655810120f1e5"
+  integrity sha512-wrTxtE63L/bpW5A2Uy/AO1gblXnNHK/cDL6LszECOoCdMJKWTj0/4n4I/pmqub+3H3KCPVDDvtXpCArnT/heFA==
   dependencies:
     highlight.js "^11.5.0"
     html-encoder-decoder "^1.3.9"
