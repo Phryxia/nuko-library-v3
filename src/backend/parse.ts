@@ -48,6 +48,7 @@ const converter = new showdown.Converter({
   extensions: [
     showdownHljs({
       pre: false,
+      auto_detection: false,
     }),
     showdownKatex({
       errorColor: '#f55666',
