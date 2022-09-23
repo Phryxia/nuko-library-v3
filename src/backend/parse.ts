@@ -3,7 +3,7 @@ import showdownHljs from 'showdown-highlight'
 import showdownKatex from 'showdown-katex'
 import katex from 'katex'
 import matter from 'gray-matter'
-import { CodeBlockExt, HeadingAnchorExt } from './renderer'
+import { CodeBlockExt, HeadingAnchorExt } from './extensions'
 
 interface ParseResult {
   content: string
