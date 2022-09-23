@@ -1,8 +1,9 @@
 .linker {
+  font-family: var(--code-font);
   width: max-content;
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  font-size: 16px;
 
   .children {
     margin-left: 1.9rem;
