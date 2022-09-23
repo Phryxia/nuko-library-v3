@@ -1,6 +1,6 @@
 import showdown from 'showdown'
 import showdownHljs from 'showdown-highlight'
-import { CodeBlockExt, HeadingAnchorExt, KatexExt } from '../extensions'
+import { createCodeBlockExt, createHeadingAnchorExt, KatexExt } from '../extensions'
 
 showdown.setFlavor('github')
 
@@ -10,28 +10,24 @@ export interface ParserContext {
   codeBlockCount: number
 }
 
-let currentContext: ParserContext | undefined
-
-export function getCurrentParserContext(): ParserContext | undefined {
-  return currentContext
-}
-
 export function createParserContext(): ParserContext {
-  const converter = new showdown.Converter({
+  const context = {
+    converter: null as any,
+    headingCount: {},
+    codeBlockCount: 0,
+  } as ParserContext
+
+  context.converter = new showdown.Converter({
     extensions: [
       showdownHljs({
         pre: false,
         auto_detection: false,
       }),
       KatexExt,
-      HeadingAnchorExt,
-      CodeBlockExt,
+      createHeadingAnchorExt(context),
+      createCodeBlockExt(context),
     ],
   })
 
-  return (currentContext = {
-    converter,
-    headingCount: {},
-    codeBlockCount: 0,
-  })
+  return context
 }

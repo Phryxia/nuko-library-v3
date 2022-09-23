@@ -1,5 +1,5 @@
 import type { ShowdownExtension } from 'showdown'
-import { getCurrentParserContext } from '../parser'
+import type { ParserContext } from '../parser'
 
 function removeTags(input: string): string {
   return input.replace(/<[^>]+>/g, ' ')
@@ -7,23 +7,21 @@ function removeTags(input: string): string {
 
 const headingRegExp = /<(h\d)(?:[^>]*)>(.*)<\/h\d[^>]*>/
 
-export const HeadingAnchorExt: ShowdownExtension = {
-  type: 'output',
-  regex: /<h\d[^>]*>.*<\/h\d[^>]*>/g,
-  replace(s: string) {
-    const match = headingRegExp.exec(s)
+export function createHeadingAnchorExt(context: ParserContext): ShowdownExtension {
+  return {
+    type: 'output',
+    regex: /<h\d[^>]*>.*<\/h\d[^>]*>/g,
+    replace(s: string) {
+      const match = headingRegExp.exec(s)
 
-    if (!match) return s
+      if (!match) return s
 
-    const context = getCurrentParserContext()
+      const [, tag, innerHtml] = match
+      const content = encodeURIComponent(removeTags(innerHtml))
+      const dup = (context.headingCount[content] = (context.headingCount[content] ??= -1) + 1)
+      const id = `${content}-${dup}`
 
-    if (!context) throw new Error('ParserContext is not set')
-
-    const [, tag, innerHtml] = match
-    const content = encodeURIComponent(removeTags(innerHtml))
-    const dup = (context.headingCount[content] = (context.headingCount[content] ??= -1) + 1)
-    const id = `${content}-${dup}`
-
-    return `<${tag} id="${id}"><a href="#${id}">§</a>${innerHtml}</${tag}>`
-  },
+      return `<${tag} id="${id}"><a href="#${id}">§</a>${innerHtml}</${tag}>`
+    },
+  }
 }
