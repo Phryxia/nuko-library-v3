@@ -1,6 +1,5 @@
 import type { ShowdownExtension } from 'showdown'
-
-const Counter = {} as Record<string, number>
+import { getCurrentParserContext } from '../parser'
 
 function removeTags(input: string): string {
   return input.replace(/<[^>]+>/g, ' ')
@@ -16,10 +15,13 @@ export const HeadingAnchorExt: ShowdownExtension = {
 
     if (!match) return s
 
-    const tag = match[1]
-    const innerHtml = match[2]
+    const context = getCurrentParserContext()
+
+    if (!context) throw new Error('ParserContext is not set')
+
+    const [, tag, innerHtml] = match
     const content = encodeURIComponent(removeTags(innerHtml))
-    const dup = (Counter[content] ??= (Counter[content] ?? -1) + 1)
+    const dup = (context.headingCount[content] = (context.headingCount[content] ??= -1) + 1)
     const id = `${content}-${dup}`
 
     return `<${tag} id="${id}"><a href="#${id}">§</a>${innerHtml}</${tag}>`

@@ -1,7 +1,5 @@
-import showdown from 'showdown'
-import showdownHljs from 'showdown-highlight'
 import matter from 'gray-matter'
-import { CodeBlockExt, HeadingAnchorExt, KatexExt } from './extensions'
+import { createParserContext } from './parser'
 
 interface ParseResult {
   content: string
@@ -10,8 +8,8 @@ interface ParseResult {
 }
 
 export function parseFile(s: string): ParseResult {
-  let { content, ...rest } = parseMeta(s)
-
+  const { content, ...rest } = parseMeta(s)
+  const { converter } = createParserContext()
   return { content: converter.makeHtml(content), ...rest }
 }
 
@@ -27,17 +25,3 @@ function parseMeta(s: string): ParseResult {
     tags,
   }
 }
-
-showdown.setFlavor('github')
-
-const converter = new showdown.Converter({
-  extensions: [
-    showdownHljs({
-      pre: false,
-      auto_detection: false,
-    }),
-    KatexExt,
-    HeadingAnchorExt,
-    CodeBlockExt,
-  ],
-})
