@@ -167,6 +167,10 @@
       pre {
         overflow: auto;
         border-radius: 6px;
+        min-height: 56px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
         code {
           display: block;
@@ -182,6 +186,43 @@
         &:not([class~='hljs']) {
           background: var(--code-background);
           color: var(--code-font-default-color);
+        }
+
+        /* 복사버튼 */
+        :global .copy-codeblock {
+          border: 1.5px solid #444;
+          border-radius: 6px;
+          top: 10px;
+          right: 10px;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 10px;
+          transition-duration: 0.2s;
+          transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+          transition-property: background-color, border-color, transform;
+
+          i {
+            transition: inherit;
+            transition-property: filter;
+            filter: brightness(0.3);
+          }
+
+          &:hover {
+            border-color: var(--content-background);
+
+            i {
+              filter: brightness(1);
+            }
+          }
+
+          &:active {
+            i {
+              transform: scale(1.1);
+            }
+          }
         }
       }
 

@@ -3,7 +3,7 @@ import showdownHljs from 'showdown-highlight'
 import showdownKatex from 'showdown-katex'
 import katex from 'katex'
 import matter from 'gray-matter'
-import { HeadingAnchorExt } from './renderer'
+import { CodeBlockExt, HeadingAnchorExt } from './renderer'
 
 interface ParseResult {
   content: string
@@ -55,6 +55,7 @@ const converter = new showdown.Converter({
       delimiters: [{ left: '$', right: '$', display: false }],
     }),
     HeadingAnchorExt,
+    CodeBlockExt,
   ],
 })
 
