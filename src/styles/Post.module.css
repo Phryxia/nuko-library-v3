@@ -291,6 +291,16 @@
       ol li::marker {
         font-weight: bold;
       }
+
+      /* 인라인 수식 */
+      p > span[class~='katex'] {
+        font-size: 1rem;
+      }
+
+      /* 블록 수식 */
+      p > span[class~='katex-display'] {
+        font-size: 1.1rem;
+      }
     }
 
     .tag-start {

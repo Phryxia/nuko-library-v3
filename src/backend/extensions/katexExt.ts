@@ -9,15 +9,11 @@ function createMathExt(regExp: RegExp, isBlock: boolean): ShowdownExtension {
     type: 'lang',
     filter(text) {
       return text.replaceAll(regExp, (match, p1) => {
-        return (
-          '<span class="katex">' +
-          katex.renderToString(p1, {
-            displayMode: isBlock,
-            errorColor: '#f55666',
-            throwOnError: false,
-          }) +
-          '</span>'
-        )
+        return katex.renderToString(p1, {
+          displayMode: isBlock,
+          errorColor: '#f55666',
+          throwOnError: false,
+        })
       })
     },
   }
