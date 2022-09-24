@@ -3,7 +3,7 @@ import { COPY_CODEBLOCK_CLASSNAME } from '@src/consts'
 import type { ParserContext } from '../parser'
 
 const codeBlockRegExp =
-  /(<pre>\s*<code[^>]*)(>(?:.(?!<\/code))*(?:.(?=<\/code))?<\/code>)\s*(<\/pre>)/gs
+  /(<pre>\s*<code[^>]*)(><\/code>|>(?:.(?!<\/code))*.<\/code>)\s*(<\/pre>)/gs
 
 export function createCodeBlockExt(context: ParserContext): ShowdownExtension {
   return {
