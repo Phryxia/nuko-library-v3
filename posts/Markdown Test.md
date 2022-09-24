@@ -49,6 +49,7 @@ Unordered
 
 - Create a list by starting a line with `+`, `-`, or `*`
 - Sub-lists are made by indenting 2 spaces:
+
   - Marker character change forces new list start:
 
     - Ac tristique libero volutpat at
@@ -56,6 +57,7 @@ Unordered
     * Facilisis in pretium nisl aliquet
 
     - Nulla volutpat aliquam velit
+
 - Very easy!
 
 Ordered
@@ -99,6 +101,12 @@ var foo = function (bar) {
 console.log(foo(5))
 ```
 
+Empty Block Test
+
+```
+
+```
+
 ## Tables
 
 | Option | Description                                                               |
@@ -138,12 +146,17 @@ With a reference later in the document defining the URL location:
 
 ## Math
 
-inline test: $\sqrt{x} = 100$
+inline test: $\sqrt{x} = 100$ and $e^{\sqrt{x}}$ something like. Also check $\frac{e^x + 3x}{2}$
 
 block test
 
 $$
 y=f(x) + x^2+\sin(x)
+$$
+
+Empty block test
+
+$$
 $$
 
 ## Plugins
@@ -171,3 +184,7 @@ Duplicated footnote reference[^second].
     and multiple paragraphs.
 
 [^second]: Footnote text.
+
+```
+
+```

@@ -1,7 +1,7 @@
 import katex from 'katex'
 import type { ShowdownExtension } from 'showdown'
 
-const mathInlineRegExp = /¨D((?:[^\n](?!¨D))*(?:[^\n](?=¨D)))¨D/g
+const mathInlineRegExp = /¨D((?:[^\n](?!¨D))*[^\n])¨D/g
 const mathBlockRegExp = /¨D¨D\n([^¨D]*)¨D¨D(\n|$)/gs
 
 function createMathExt(regExp: RegExp, isBlock: boolean): ShowdownExtension {
