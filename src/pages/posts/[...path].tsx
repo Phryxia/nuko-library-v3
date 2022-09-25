@@ -11,6 +11,7 @@ import { getAllPostsPaths, getPost } from '@src/backend/md-scan'
 import Header from '@src/components/header'
 import Footer from '@src/components/footer'
 import { NavigatorProps } from '@src/components/navigator'
+import { TableOfContents } from '@src/backend/postprocess'
 
 interface PostProps {
   title: string
@@ -18,9 +19,10 @@ interface PostProps {
   date: string
   tree: NavigatorProps
   tags: string[]
+  tableOfContents: TableOfContents
 }
 
-export default function Post({ title, content, date, tags, tree }: PostProps) {
+export default function Post({ title, content, date, tags, tree, tableOfContents }: PostProps) {
   const router = useRouter()
   const contentDom = useRef<HTMLDivElement>(null)
 
@@ -110,7 +112,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     decodeURIComponent(token)
   )
 
-  const { content, date, tags } = await getPost(path.join('/') + '.md')
+  const { content, date, tags, tableOfContents } = await getPost(path.join('/') + '.md')
 
   // 푸터를 위한 작업
   const postsPaths = await getAllPostsPaths()
@@ -149,6 +151,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       date: dayjs(date).format('YYYY-MM-DD'),
       tree,
       tags,
+      tableOfContents,
     },
   }
 }

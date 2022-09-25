@@ -17,9 +17,17 @@ export function createHeadingAnchorExt(context: ParserContext): ShowdownExtensio
       if (!match) return s
 
       const [, tag, innerHtml] = match
-      const content = encodeURIComponent(removeTags(innerHtml))
-      const dup = (context.headingCount[content] = (context.headingCount[content] ??= -1) + 1)
-      const id = `${content}-${dup}`
+      const content = removeTags(innerHtml).trim()
+      const encodedContent = encodeURIComponent(content)
+      const dup = (context.headingCount[encodedContent] =
+        (context.headingCount[encodedContent] ?? -1) + 1)
+      const id = `${encodedContent}-${dup}`
+
+      context.headings.push({
+        content,
+        id,
+        level: Number.parseInt(tag.match(/\d+/)![0]),
+      })
 
       return `<${tag} id="${id}"><a href="#${id}">§</a>${innerHtml}</${tag}>`
     },
